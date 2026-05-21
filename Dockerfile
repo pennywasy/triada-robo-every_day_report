@@ -30,6 +30,11 @@ WORKDIR /app
 # Copy application files
 COPY . /app/
 
+RUN chmod -R 777 /app
+
+# Install PHP dependencies with PHPMailer
+RUN composer install --no-interaction --prefer-dist
+
 # Create necessary directories
 RUN mkdir -p /var/log/supervisor \
     && mkdir -p /app/storage/logs \
