@@ -7,7 +7,6 @@ services:
     ports:
       - "80:80"
     volumes:
-      - .:/app
       - ./storage:/app/storage
     env_file:
       - .env
