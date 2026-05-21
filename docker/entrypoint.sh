@@ -6,10 +6,6 @@ echo "Starting Triada Robo Every Day Report Service..."
 # Create necessary directories
 mkdir -p /var/log/php-fpm /var/log/supervisor /var/log/nginx
 
-# Install PHP dependencies (via Composer, after volume mount)
-echo "Installing PHP dependencies..."
-cd /app && composer install --no-interaction --prefer-dist 2>&1
-mkdir -p /app/storage/logs
 
 # Create php-fpm log file
 touch /var/log/php-fpm/error.log
