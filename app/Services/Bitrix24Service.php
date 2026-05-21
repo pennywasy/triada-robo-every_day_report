@@ -29,7 +29,7 @@ class Bitrix24Service
             // Получаем все счета со статусом "Оплачен" через универсальный метод crm.item.list
             // entityTypeId = 31 — счета (устаревший crm.invoice.list больше не поддерживается)
             // Поля смарт-процесса используют camelCase: parentId2, contactIds, companyId, assignedById, movedTime
-            $contractField = $_ENV['BITRIX24_CONTRACT_NUMBER_FIELD'] ?? 'ufCrmSmartInvoice1758806730';
+            $contractField = $_ENV['BITRIX24_CONTRACT_NUMBER_FIELD'] ?? 'ufCrm_SMART_INVOICE_1758806730';
             $stageId = $_ENV['BITRIX24_PAID_INVOICE_STATUS'] ?? 'DT31_11:P';
             $params = [
                 'entityTypeId' => 31,
