@@ -1,0 +1,12 @@
+<?php
+
+namespace App\Controllers;
+
+
+class {{ControllerName}} extends AbstractController
+{
+    public function __construct()
+    {
+        parent::__construct();
+    }
+}

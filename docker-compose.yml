@@ -1,0 +1,32 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: triada-robo-app
+    ports:
+      - "80:80"
+    volumes:
+      - .:/app
+      - ./storage:/app/storage
+    env_file:
+      - .env
+    environment:
+      - PHP_FPM_USER=nobody
+      - PHP_FPM_GROUP=nobody
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
+    networks:
+      - app-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  app-network:
+    driver: bridge

@@ -1,0 +1,14 @@
+{
+  "config": {
+    "platform": {
+      "php": "8.3.0"
+    }
+  },
+  "require": {
+    "guzzlehttp/guzzle": "^7.0",
+    "pecee/simple-router": "^5.0",
+    "illuminate/database": "^8.0",
+    "phpmailer/phpmailer": "^6.8",
+    "ext-pdo": "*"
+  }
+}

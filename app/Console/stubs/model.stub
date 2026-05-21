@@ -1,0 +1,20 @@
+<?php
+
+namespace App\Models;
+
+use App\Core\Model;
+
+class {{ClassName}} extends Model
+{
+    protected $table = '{{table_name}}';
+    protected $primaryKey = 'id';
+    public $timestamps = true;
+
+    protected $fillable = [
+        // Add your fillable fields here
+    ];
+
+    protected $casts = [
+        // Add your field casts here
+    ];
+}

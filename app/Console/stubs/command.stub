@@ -1,0 +1,19 @@
+<?php
+
+namespace App\Console\Commands;
+
+use App\Core\Command;
+
+class {{ClassName}} extends Command
+{
+    protected string $name = '{{command_name}}';
+    protected string $description = '{{description}}';
+
+    public function handle(array $arguments): int
+    {
+        // TODO: Implement command logic
+        $this->info('{{ClassName}} executed successfully');
+
+        return 0;
+    }
+}

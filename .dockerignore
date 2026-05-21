@@ -1,0 +1,14 @@
+.git
+.gitignore
+.env
+.env.local
+.vscode
+.idea
+node_modules
+npm-debug.log
+.DS_Store
+*.md
+docker-compose.override.yml
+.env.*.local
+storage/logs/*
+!storage/logs/.gitkeep

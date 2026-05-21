@@ -1,0 +1,13 @@
+#!/usr/bin/env php
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '/app/Core/Loader.php';
+
+try {\App\Core\Loader::register();
+    $kernel = new \App\Console\Kernel();
+    exit($kernel->handle($argv));
+} catch (\Exception $e) {
+    echo "\033[31mError:\033[0m " . $e->getMessage() . "\n";
+    exit(1);
+}
