@@ -134,8 +134,8 @@ class Bitrix24Service
                 'SELECT' => [
                     'ID',
                     'NAME',
-                    'FIRST_NAME',
                     'LAST_NAME',
+                    'SECOND_NAME',
                     'EMAIL',
                     'PERSONAL_PHONE',
                     'WORK_DEPARTMENT',
