@@ -211,7 +211,7 @@
                             $contact = $invoice['contact'] ?? [];
                             $contractField = $_ENV['BITRIX24_CONTRACT_NUMBER_FIELD'] ?? 'UF_CRM_SMART_INVOICE_1758806730';
                             $contractNumber = $invoice[$contractField] ?? 'N/A';
-                            $manager = $deal['ASSIGNED_BY'] ?? 'Unknown';
+                            $manager = $deal['ASSIGNED_BY_NAME'] ?? 'Unknown';
                             $dateModify = date('d.m.Y', strtotime($invoice['movedTime'] ?? 'now'));
                             ?>
                             <tr>
@@ -223,7 +223,7 @@
                                 <td><?php echo htmlspecialchars($invoice['id'] ?? 'N/A'); ?></td>
                                 <td><?php echo htmlspecialchars($contractNumber); ?></td>
                                 <td class="amount"><?php echo number_format($invoice['opportunity'] ?? 0, 2, ',', ' '); ?> ₽</td>
-                                <td><?php echo htmlspecialchars($deal['ASSIGNED_BY'] ?? 'N/A'); ?></td>
+                                <td><?php echo htmlspecialchars($deal['ASSIGNED_BY_NAME'] ?? 'N/A'); ?></td>
                                 <td><?php echo $dateModify; ?></td>
                             </tr>
                         <?php endforeach; ?>
