@@ -121,6 +121,18 @@ class ReportService
 
             if ($dealId) {
                 $invoice['deal'] = $this->bitrix24->getDealInfo((int)$dealId);
+
+                // Разрешаем ФИО ответственного через user.get (ASSIGNED_BY отсутствует в crm.deal.get)
+                if (!empty($invoice['deal']['ASSIGNED_BY_ID'])) {
+                    $responsibleUser = $this->bitrix24->getUserInfo((int)$invoice['deal']['ASSIGNED_BY_ID']);
+                    $invoice['deal']['ASSIGNED_BY_NAME'] = trim(
+                        ($responsibleUser['LAST_NAME'] ?? '') . ' ' .
+                        ($responsibleUser['NAME'] ?? '') . ' ' .
+                        ($responsibleUser['SECOND_NAME'] ?? '')
+                    ) ?: 'N/A';
+                } else {
+                    $invoice['deal']['ASSIGNED_BY_NAME'] = 'N/A';
+                }
             }
 
             // Компания (прямое поле)
@@ -153,13 +165,7 @@ class ReportService
     private function filterInvoicesByManager(array $invoices, int $managerId): array
     {
         return array_filter($invoices, function ($invoice) use ($managerId) {
-            // assignedById — ответственный за счёт (новое поле смарт-счетов)
-            $responsibleId = $invoice['assignedById'] ?? null;
-            if ($responsibleId) {
-                return (int)$responsibleId === $managerId;
-            }
-
-            // Fallback: поиск ответственного в сделке
+            // Ответственный определяется только из привязанной сделки
             $deal = $invoice['deal'] ?? null;
             if ($deal) {
                 $dealResponsibleId = $deal['ASSIGNED_BY_ID'] ?? null;
