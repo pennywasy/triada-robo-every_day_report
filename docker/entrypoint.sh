@@ -5,6 +5,8 @@ echo "Starting Triada Robo Every Day Report Service..."
 
 # Create necessary directories
 mkdir -p /var/log/php-fpm /var/log/supervisor /var/log/nginx
+mkdir -p /app/storage/logs /app/logs
+chown -R nobody:nobody /app/storage /app/logs
 
 
 # Create php-fpm log file

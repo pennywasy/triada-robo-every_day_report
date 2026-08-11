@@ -33,7 +33,9 @@ class Loader
      */
     private static function getClassFile(string $class): string
     {
-        $class = str_replace('\\', DIRECTORY_SEPARATOR, $class);
+        $parts = explode('\\', $class);
+        $parts[0] = strtolower($parts[0]);
+        $class = implode(DIRECTORY_SEPARATOR, $parts);
 
         $baseDir = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR;
 
