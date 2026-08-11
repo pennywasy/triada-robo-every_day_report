@@ -205,7 +205,7 @@
                                 <td><?php echo htmlspecialchars($invoice['id'] ?? 'N/A'); ?></td>
                                 <td><?php echo htmlspecialchars($contractNumber); ?></td>
                                 <td class="amount"><?php echo number_format($invoice['opportunity'] ?? 0, 2, ',', ' '); ?> ₽</td>
-                                <td><?php echo htmlspecialchars($deal['ASSIGNED_BY'] ?? 'N/A'); ?></td>
+                                <td><?php echo htmlspecialchars(trim(($manager['LAST_NAME'] ?? '') . ' ' . ($manager['NAME'] ?? '') . ' ' . ($manager['SECOND_NAME'] ?? '')) ?: 'N/A'); ?></td>
                                 <td><?php echo $dateModify; ?></td>
                             </tr>
                         <?php endforeach; ?>
